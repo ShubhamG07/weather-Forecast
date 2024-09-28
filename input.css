@@ -77,3 +77,25 @@ hr {
   .hide{
     display: none;
   }
+
+  /* classes for suggestion list  */
+
+  #suggestionsContainer {
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    top: 190px;
+    left: 30px;
+    z-index: 10;
+    background: white;
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}

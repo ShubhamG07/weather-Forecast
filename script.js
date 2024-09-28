@@ -3,6 +3,41 @@ const currenContainer = document.getElementById("currentContainer");
 const currentDetails = document.getElementById('currentdetails');
 const currentImage = document.getElementById('currentimage');
 const forecastContainer =document.getElementById("forecast");
+const locationInput = document.getElementById('inputLocation');
+const suggestionsContainer = document.getElementById('suggestionsContainer');
+
+let searchedLocations = JSON.parse(sessionStorage.getItem('searchedLocations')) || [];
+
+locationInput.addEventListener('input', () => {
+    const inputValue = locationInput.value.toLowerCase();
+    suggestionsContainer.innerHTML = '';
+
+    const suggestions = searchedLocations.filter(location => location.toLowerCase().includes(inputValue));
+
+    suggestions.forEach(location => {
+        const suggestionItem = document.createElement('div');
+        suggestionItem.textContent = location;
+        suggestionItem.classList.add('suggestion-item');
+        suggestionItem.onclick = () => {
+            locationInput.value = location; // Set input to the selected suggestion
+            suggestionsContainer.innerHTML = ''; // Clear suggestions
+            // fetchWeatherData(location); // Fetch weather for the selected location
+        };
+        suggestionsContainer.appendChild(suggestionItem);
+    });
+});
+
+document.getElementById('searchButton').addEventListener('click', () => {
+    const location = locationInput.value.trim();
+    if (location) {
+        // Add the location to the list and save to localStorage
+        if (!searchedLocations.includes(location)) {
+            searchedLocations.push(location);
+            sessionStorage.setItem('searchedLocations', JSON.stringify(searchedLocations));
+        }
+       
+    }
+});
 
 
 document.getElementById('searchButton').addEventListener('click', () => {
@@ -22,7 +57,7 @@ function fetchWeatherData(location) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Location not found');
+                throw new Error('Location not found. Please Check for Spelling Mistake !');
             }
             return response.json();
         })
@@ -70,31 +105,6 @@ function reverseGeocode(lat, lon) {
         });
 }
 
-// function fetchWeather(lat, lon) {
-//     // Clear previous results
-//     forecastContainer.innerHTML = '';
-
-//     currentDetails.innerHTML = '';
-//     currentImage.innerHTML = '';
-
-//     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}?unitGroup=metric&key=${apiKey}&contentType=json`;
-
-//     fetch(url)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Location not found');
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             displayWeather(data);
-//         })
-//         .catch(error => {
-//             currenContainer.classList.remove("hide");
-//             currenContainer.classList.add("currentDetailsError");
-//             currentDetails.innerHTML = `<p style="font-weight:bold; font-size:25px">${error.message}</p>`;
-//         });
-// }
 
 
 function displayWeather(data) {
