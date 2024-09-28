@@ -184,7 +184,7 @@ document.getElementById("forecastTitle").classList.remove("hide");
 
     for(let i=1;i<6;i++){
 
-        // craeting each card for 1 day data 
+        // creating each card for 1 day data 
 
         let dataContainer =document.createElement("div");
       

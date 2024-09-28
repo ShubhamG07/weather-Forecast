@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Forecast Application</title>
     <link href="./output.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="icon.png" />
   </head>
   <body class="bg-slate-200">
-    <h1 class="bg-blue-600 p-5 text-3xl text-center text-white font-bold">
+    <h1 id="header" class="bg-blue-600 p-5 text-3xl text-center text-white font-bold">
       Weather Dashboard
     </h1>
-    <div class="flex">
+    <div class="container flex">
 
         <!-- our left bar for search inout and current location  -->
 
@@ -54,7 +55,7 @@
 
         <!-- container for current day weather details  -->
 
-        <div id="currentContainer" class="flex currentDetails rounded-lg hide">
+        <div id="currentContainer" class="currentDetails rounded-lg hide">
             <div id="currentdetails">
 
             </div>

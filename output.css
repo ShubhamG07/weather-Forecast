@@ -653,11 +653,6 @@ video {
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
 .p-1 {
   padding: 0.25rem;
 }
@@ -697,14 +692,14 @@ video {
   font-weight: 700;
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 .text-red-600 {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 /* horizontal divider for search button and current location  */
@@ -737,6 +732,7 @@ hr::after {
   color: white;
   height: 40vh;
   margin-top: 10px;
+  display: flex;
 }
 
 .currentDetailsError{
@@ -801,6 +797,114 @@ hr::after {
 
 .suggestion-item:hover {
   background-color: #f0f0f0;
+}
+
+/* Media query for responsiveness  */
+
+/* media query for ipad mini  */
+
+@media(max-width:768px){
+  .leftbar{
+    text-align: center;
+  }
+
+  .leftbar p{
+    font-size: 25px;
+  }
+
+  .leftbar button{
+    width: 95%;
+    margin-left: 5px;
+    font-size: 25px;
+    padding: 10px;
+  }
+
+  hr{
+    width: 95%;
+  }
+
+  #inputLocation{
+    width: 95%;
+    font-size: 25px;
+  }
+
+  .container{
+    flex-direction: column;
+  }
+
+  .currentDetails{
+    flex-direction: column;
+    margin-left: 0px;
+    width: 98%;
+  }
+
+  #currentdetails{
+    width: 500px;
+    height: 200px;
+    font-size: 20px;
+  }
+
+  #currentimage{
+    position: relative;
+    left: 0px;
+  }
+
+  #currentimage p{
+    position: absolute;
+    left: 0px;
+  }
+
+  .weatherimage{
+    margin-left: 0px;
+  }
+
+  #forecast{
+    flex-wrap: wrap;
+  }
+
+  #forecast div{
+    width: 45%;
+    font-size: 25px;
+    padding: 15px;
+    height: 300px;
+  }
+}
+
+/* media query for iphone se  */
+
+@media(max-width:375px){
+  #header{
+    width: 100%;
+  }
+
+  #inputLocation{
+    width: 92%;
+  }
+
+  hr{
+    width: 90%;
+  }
+
+  .currentDetails{
+    height: 400px;
+    margin-right: 5px;
+    overflow:auto;
+  }
+
+  #currentdetails{
+    font-size: 20px;
+  }
+
+  #currentdetails h2{
+    font-size: 20px;
+  }
+
+  #forecast div{
+    width: 90%;
+    font-size: 25px;
+    padding: 20px;
+    height: 300px;
+  }
 }
 
 .focus\:ring-2:focus {
