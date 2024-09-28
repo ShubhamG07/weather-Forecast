@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="./output.css" rel="stylesheet">
-</head>
-<body>
-    <h2 class="bg-slate-500">Hey</h2>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast Application</title>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body class="bg-slate-200">
+    <h1 class="bg-blue-600 p-5 text-3xl text-center text-white font-bold">
+      Weather Dashboard
+    </h1>
+    <div class="flex">
+      <div class="leftbar">
+        <p class="font-bold text-xl mt-8 ml-5">Enter a City</p>
+        <input
+          type="text"
+          id="inputLocation"
+          placeholder="E.g., Delhi, Mumbai"
+          class="block p-2 ml-5 mt-3 w-56 focus:ring-2 border-2 border-slate-400 rounded"
+        />
+        <button
+          id="searchButton"
+          class="bg-blue-500 text-white text-2xl p-1 w-56 mt-3 ml-5 rounded-lg"
+        >
+          Search
+        </button>
+        <hr />
+        <button
+          id="currentLocation"
+          class="bg-slate-600 text-white text-xl p-2 w-56 mt-3 ml-5 rounded-lg"
+        >
+          Use Current Location
+        </button>
+      </div>
+
+      <div class="rightbar mt-3 ml-5" id="weatherResult">
+
+        <div id="currentContainer" class="flex currentDetails rounded-lg hide">
+            <div id="currentdetails">
+
+            </div>
+
+            <div id="currentimage" class="text-right">
+
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
