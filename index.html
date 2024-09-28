@@ -11,22 +11,35 @@
       Weather Dashboard
     </h1>
     <div class="flex">
+
+        <!-- our left bar for search inout and current location  -->
+
       <div class="leftbar">
         <p class="font-bold text-xl mt-8 ml-5">Enter a City</p>
         <input
           type="text"
           id="inputLocation"
           placeholder="E.g., Delhi, Mumbai"
-          class="block p-2 ml-5 mt-3 w-56 focus:ring-2 border-2 border-slate-400 rounded"
+          class="block p-2 ml-5 mt-3 w-56 focus:ring-2 border-2 border-slate-400 rounded" 
         />
+
+        <div id="errorMessage" class="text-red-600 ml-5 hide"></div>
+
+        <!-- search button  -->
         <button
           id="searchButton"
           class="bg-blue-500 text-white text-2xl p-1 w-56 mt-3 ml-5 rounded-lg"
         >
           Search
         </button>
+
+        <!-- our suggestion list using session Storage  -->
+
         <div id="suggestionsContainer"></div>
+
         <hr />
+
+        <!-- current location button  -->
         <button
           id="currentLocation"
           class="bg-slate-600 text-white text-xl p-2 w-56 mt-3 ml-5 rounded-lg"
@@ -34,6 +47,8 @@
           Use Current Location
         </button>
       </div>
+
+      <!-- our rightbar to show all fetched data  -->
 
       <div class="rightbar mt-3 ml-5" id="weatherResult">
 
@@ -51,9 +66,11 @@
         </div>
 
         <!-- container for 5 day forecast  -->
+
         <h2 id="forecastTitle" class="hide mt-5 text-2xl font-bold">
             5 Days Forecast
         </h2>
+
         <div class="hide forecastDetail flex" id="forecast">
 
             

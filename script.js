@@ -5,8 +5,13 @@ const currentImage = document.getElementById('currentimage');
 const forecastContainer =document.getElementById("forecast");
 const locationInput = document.getElementById('inputLocation');
 const suggestionsContainer = document.getElementById('suggestionsContainer');
+const errorMessage = document.getElementById('errorMessage');
+
+// getting items by sessionStorage 
 
 let searchedLocations = JSON.parse(sessionStorage.getItem('searchedLocations')) || [];
+
+// showing suggestions while input location 
 
 locationInput.addEventListener('input', () => {
     const inputValue = locationInput.value.toLowerCase();
@@ -21,11 +26,13 @@ locationInput.addEventListener('input', () => {
         suggestionItem.onclick = () => {
             locationInput.value = location; // Set input to the selected suggestion
             suggestionsContainer.innerHTML = ''; // Clear suggestions
-            // fetchWeatherData(location); // Fetch weather for the selected location
+            
         };
         suggestionsContainer.appendChild(suggestionItem);
     });
 });
+
+// adding items in sessionStorage whenever we enter new location 
 
 document.getElementById('searchButton').addEventListener('click', () => {
     const location = locationInput.value.trim();
@@ -39,11 +46,22 @@ document.getElementById('searchButton').addEventListener('click', () => {
     }
 });
 
+// event listener for search button 
 
 document.getElementById('searchButton').addEventListener('click', () => {
     const location = document.getElementById('inputLocation').value;
+    if (!location) {
+        errorMessage.classList.remove("hide");
+        errorMessage.innerHTML = "Please enter a location."; // Set error message
+        return; // Exit the function if the input is empty
+    }
+    else{
+        errorMessage.classList.add("hide");
+    }
     fetchWeatherData(location);
 });
+
+// function to fetch data using api 
 
 function fetchWeatherData(location) {
 
@@ -90,6 +108,8 @@ document.getElementById('currentLocation').addEventListener('click', () => {
     }
 });
 
+// current location give longitude and latitude converting it to a named location using openstreetmap api 
+
 function reverseGeocode(lat, lon) {
     const reverseGeocodeUrl = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`;
 
@@ -106,6 +126,7 @@ function reverseGeocode(lat, lon) {
 }
 
 
+// function to display data fetched with weather api 
 
 function displayWeather(data) {
 
@@ -122,15 +143,8 @@ function displayWeather(data) {
 currenContainer.classList.remove("hide");
 forecastContainer.classList.remove("hide");
 document.getElementById("forecastTitle").classList.remove("hide");
-    // const weatherHTML = `
-    //     <h2> ${title}</h2>
-    //     <p>${temperature } </p>
-    //     <p>${condtion}</p>
-    //     <p>${humidity}</p>
-    //     <img src="icons/${data.currentConditions.icon}.png" alt="${data.currentConditions.conditions}" >
-    // `;
-  
-    // // currentResult.innerHTML = weatherHTML;
+
+// creating and adding value to item to append it to our weather display container 
 
     let item1 = document.createElement("h2");
     item1.innerHTML=title;
@@ -155,15 +169,14 @@ document.getElementById("forecastTitle").classList.remove("hide");
     let item6 =document.createElement("p");
     item6.innerHTML=`${data.currentConditions.conditions}`;
     
-//  let item8 = document.createElement("p");
-//  item8.innerHTML=`test : ${data.days[1].cloudcover}`
-    
+
+    // appending all data item to our weather display container in html 
+
     currentDetails.appendChild(item1);
     currentDetails.appendChild(item2);
     currentDetails.appendChild(item3);
     currentDetails.appendChild(item4);
     currentDetails.appendChild(item7);
-    // currentDetails.appendChild(item8);
     currentImage.appendChild(item5);
     currentImage.appendChild(item6);
 
@@ -206,3 +219,5 @@ document.getElementById("forecastTitle").classList.remove("hide");
     }
     
 }
+
+
