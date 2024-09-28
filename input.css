@@ -30,12 +30,36 @@ hr {
     width: 1050px;
     background-color: rgb(37 99 235);
     color: white;
-    height: 30vh;
+    height: 40vh;
     margin-top: 10px;
   }
 
   .currentDetailsError{
     background-color: red;
+  }
+
+  #currentdetails{
+    width: 50%;
+    overflow: auto;
+  }
+
+  /* forecast details classes  */
+
+  .forecastDetails{
+    width: 1050px;
+    height: 45vh;
+    border: 2px solid black;
+  }
+
+  .forecastCard{
+    height: 200px;
+    width: 180px;
+    background-color: rgb(87, 98, 109);
+    color: white;
+    border-radius: 5px;
+    margin: 15px;
+    padding:15px;
+    
   }
 
   /* some re-usable classes  */
@@ -46,7 +70,8 @@ hr {
   }
 
   .weatherimage{
-    margin-left: 500px;
+    margin-left: 400px;
+    
   }
 
   .hide{
